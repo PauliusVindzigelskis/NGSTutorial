@@ -23,14 +23,15 @@
 
 #pragma mark - Public API
 
--(void)loadScene:(NSInteger)scene
+-(BOOL)loadScene:(NSInteger)scene
 {
     NSInteger sceneCount = [self numberOfScenes];
     if (scene >= sceneCount)
     {
-        return;
+        return NO;
     }
 
+    self.currentScene = scene;
     [self.holedView removeHoles];
     
     NSInteger items = [self.dataSource tutorialController:self numberOfItemsInScene:scene];
@@ -48,25 +49,29 @@
                                       onPosition:item.position
                                           margin:item.margin];
     }
+    return YES;
 }
 
--(void)loadNextScene
+-(BOOL)loadNextScene
 {
     NSInteger sceneCount = [self numberOfScenes];
     NSInteger scene = MIN(sceneCount-1, self.currentScene+1);
     if (scene != self.currentScene)
     {
-        [self loadScene:scene];
+        return [self loadScene:scene];
     }
+    
+    return NO;
 }
 
--(void)loadPreviousScene
+-(BOOL)loadPreviousScene
 {
     NSInteger scene = MAX(0, self.currentScene-1);
     if (scene != self.currentScene)
     {
-        [self loadScene:scene];
+       return [self loadScene:scene];
     }
+    return NO;
 }
 
 #pragma mark - Private API
@@ -87,25 +92,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    self.view.backgroundColor = [UIColor clearColor];
     JMHoledView *holedView = [[JMHoledView alloc] init];
+    holedView.holeViewDelegate = self;
     [self.view addSubview:holedView];
     [holedView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
-    
+
     self.holedView = holedView;
 }
 
--(void)viewWillAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     [self loadScene:0];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - JMHoledView delegate
@@ -116,6 +118,11 @@
     if ([self.delegate respondsToSelector:@selector(tutorialControllerDidReceiveTap:)])
     {
         [self.delegate tutorialControllerDidReceiveTap:self];
+    } else {
+        if (![self loadNextScene])
+        {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     }
 }
 

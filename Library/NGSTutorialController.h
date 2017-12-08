@@ -6,7 +6,7 @@
 //  Copyright © 2017 Paulius Vindzigelskis. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "NGSSelfPresentableViewController.h"
 #import <JMHoledView/JMHoledView.h>
 
 @interface NGSItem : NSObject
@@ -40,14 +40,14 @@
 - (void) tutorialController:(NGSTutorialController*)tutorial willShowLabel:(UILabel*)label atIndexPath:(NSIndexPath*)indexPath;
 @end
 
-@interface NGSTutorialController : UIViewController
+@interface NGSTutorialController : NGSSelfPresentableViewController
 
 @property (nonatomic, assign, readonly) NSInteger currentScene;
 @property (nonatomic, weak) id<NGSTutorialControllerDataSource> dataSource;
 @property (nonatomic, weak) id<NGSTutorialControllerDelegate> delegate;
 
-- (void) loadScene:(NSInteger)scene;
-- (void) loadNextScene;
-- (void) loadPreviousScene;
+- (BOOL) loadScene:(NSInteger)scene;
+- (BOOL) loadNextScene;
+- (BOOL) loadPreviousScene;
 
 @end
