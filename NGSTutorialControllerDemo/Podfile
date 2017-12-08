@@ -1,0 +1,7 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '9.0'
+
+target 'NGSTutorialControllerDemo' do
+    pod 'NGSTutorial', path:'../'
+    pod 'JMHoledView', :git => 'https://github.com/PauliusVindzigelskis/JMHoledView.git', :branch => 'feature/iOS7Only'
+end
