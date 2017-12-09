@@ -18,44 +18,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="jSA-xg-Dsl">
-                                <rect key="frame" x="159" y="141.5" width="56" height="404"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jSA-xg-Dsl">
+                                <rect key="frame" x="0.0" y="-3485.5" width="375" height="7659"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="soN-wd-oQl">
-                                        <rect key="frame" x="0.0" y="0.0" width="56" height="34"/>
+                                        <rect key="frame" x="170.5" y="0.0" width="34" height="34"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Uno"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vi-Oh-hbj">
-                                        <rect key="frame" x="0.0" y="74" width="56" height="34"/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Dos"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcA-kb-XQ7">
-                                        <rect key="frame" x="0.0" y="148" width="56" height="34"/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Tres"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vi-Oh-hbj">
+                                        <rect key="frame" x="176.5" y="54" width="22" height="22"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxZ-LN-hAW">
-                                        <rect key="frame" x="0.0" y="222" width="56" height="34"/>
+                                        <rect key="frame" x="159.5" y="96" width="56" height="34"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Quatro"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kp-FU-N5s">
-                                        <rect key="frame" x="0.0" y="296" width="56" height="34"/>
+                                        <rect key="frame" x="166.5" y="150" width="42" height="34"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Pinto"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C9P-Qk-Dll">
-                                        <rect key="frame" x="0.0" y="370" width="56" height="34"/>
+                                        <rect key="frame" x="167" y="204" width="41" height="34"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Sixto"/>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Tres tres sndkjnsdjkncksjdnck jsdnkcjns djc djsnkcjsndkjcnds " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4er-Yi-xVL" userLabel="Tres">
+                                        <rect key="frame" x="0.0" y="258" width="375" height="7401"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="4er-Yi-xVL" firstAttribute="width" secondItem="jSA-xg-Dsl" secondAttribute="width" id="SE8-cj-Zys"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="jSA-xg-Dsl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ARH-JA-pIN"/>
                             <constraint firstItem="jSA-xg-Dsl" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="CVy-N7-Gm5"/>
                             <constraint firstItem="jSA-xg-Dsl" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="hKF-20-ld3"/>
                         </constraints>
