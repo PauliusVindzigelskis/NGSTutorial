@@ -22,11 +22,14 @@
 @implementation NGSTutorialController
 
 #pragma mark - Public API
-
+-(BOOL)reloadCurrentScene
+{
+    return [self loadScene:self.currentScene];
+}
 -(BOOL)loadScene:(NSInteger)scene
 {
     NSInteger sceneCount = [self numberOfScenes];
-    if (scene >= sceneCount)
+    if (scene < 0 || scene >= sceneCount)
     {
         return NO;
     }

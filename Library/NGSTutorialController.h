@@ -49,5 +49,6 @@
 - (BOOL) loadScene:(NSInteger)scene;
 - (BOOL) loadNextScene;
 - (BOOL) loadPreviousScene;
+- (BOOL) reloadCurrentScene;
 
 @end
