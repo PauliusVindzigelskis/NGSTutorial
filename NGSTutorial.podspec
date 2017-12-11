@@ -13,11 +13,11 @@ Pod::Spec.new do |s|
 
   s.description      = 'Framework to build interactive tutorials'
 
-  s.homepage         = 'https://github.com/Paulius Vindzigelskis/NGSTutorial'
+  s.homepage         = 'https://github.com/PauliusVindzigelskis/NGSTutorial'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Paulius Vindzigelskis' => 'p.vindzigelskis@gmail.com' }
-  s.source           = { :git => 'https://github.com/Paulius Vindzigelskis/NGSTutorial.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/PauliusVindzigelskis/NGSTutorial.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '9.0'
 
