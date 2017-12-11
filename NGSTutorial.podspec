@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Paulius Vindzigelskis' => 'p.vindzigelskis@gmail.com' }
-  s.source           = { :git => 'https://github.com/PauliusVindzigelskis/NGSTutorial.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/PauliusVindzigelskis/NGSTutorial.git', :tag => "R0.1/#{s.version}" }
 
   s.ios.deployment_target = '9.0'
 
