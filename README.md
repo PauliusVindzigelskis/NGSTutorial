@@ -1,6 +1,10 @@
 # NGSTutorial
 Framework to build interactive tutorials
 
+## Installation
+
+pod 'NGSTutorial'
+
 ## Usage
 
 Tutorial is based on scenes and targets. One or bunch of targets make a scene. By default, scene changes with user tap on screen. This is overridable with delegate method.
