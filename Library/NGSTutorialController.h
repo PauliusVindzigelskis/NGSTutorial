@@ -7,7 +7,7 @@
 //
 
 #import "NGSSelfPresentableViewController.h"
-#import <JMHoleView/JMHoledView.h>
+#import <JMHoledView/JMHoledView.h>
 
 @interface NGSItem : NSObject
 
