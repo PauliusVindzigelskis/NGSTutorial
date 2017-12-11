@@ -15,8 +15,8 @@ Open demo app for possible integration.
 
 ## Dependencies (added automatically with CocoaPod installation)
 
-- Masonry
-- JMHoleView
+- [Masonry](https://github.com/SnapKit/Masonry)
+- [JMHoledView](https://github.com/leverdeterre/JMHoledView)
 
 ## Preview
 
