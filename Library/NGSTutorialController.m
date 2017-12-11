@@ -76,6 +76,15 @@
     }
     return NO;
 }
+    
+-(void)setTintColor:(UIColor *)tintColor
+{
+    if (tintColor != _tintColor)
+    {
+        _tintColor = tintColor;
+        self.holedView.dimingColor = tintColor;
+    }
+}
 
 #pragma mark - Private API
 
@@ -98,6 +107,7 @@
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     self.view.backgroundColor = [UIColor clearColor];
     JMHoledView *holedView = [[JMHoledView alloc] init];
+    holedView.dimingColor = self.tintColor ? : [UIColor colorWithWhite:0 alpha:0.75f];
     holedView.holeViewDelegate = self;
     [self.view addSubview:holedView];
     [holedView mas_makeConstraints:^(MASConstraintMaker *make) {

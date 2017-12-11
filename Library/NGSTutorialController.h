@@ -45,6 +45,7 @@
 @property (nonatomic, assign, readonly) NSInteger currentScene;
 @property (nonatomic, weak) id<NGSTutorialControllerDataSource> dataSource;
 @property (nonatomic, weak) id<NGSTutorialControllerDelegate> delegate;
+@property (nonatomic, strong) UIColor *tintColor;
 
 - (BOOL) loadScene:(NSInteger)scene;
 - (BOOL) loadNextScene;
