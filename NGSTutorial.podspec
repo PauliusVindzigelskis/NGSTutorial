@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.description      = 'Framework to build interactive tutorials'
 
   s.homepage         = 'https://github.com/PauliusVindzigelskis/NGSTutorial'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.screenshot       = 'https://user-images.githubusercontent.com/2383901/33856667-70c34d46-de8e-11e7-9ece-945037ca00de.gif'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Paulius Vindzigelskis' => 'p.vindzigelskis@gmail.com' }
   s.source           = { :git => 'https://github.com/PauliusVindzigelskis/NGSTutorial.git', :tag => "R0.1/#{s.version}" }
