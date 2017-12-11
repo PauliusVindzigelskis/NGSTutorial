@@ -9,16 +9,80 @@
 #import "ViewController.h"
 #import <NGSTutorial/NGSTutorial.h>
 
+typedef NS_ENUM(NSInteger, TargetType)
+{
+    TargetTypePlain,
+    TargetTypeRounded,
+    TargetTypeCircle
+};
+
+@interface DemoItem : NGSItem
+@property (nonatomic, assign) TargetType type;
+@property (nonatomic, assign) BOOL borderedText;
+@end
+
+@implementation DemoItem
+@end
+
 @interface ViewController () <NGSTutorialControllerDataSource, NGSTutorialControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIStackView *stackView;
-
+@property (strong, nonatomic) NSMutableArray< NSMutableArray<DemoItem*> * > *scenes;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
-    self.view.backgroundColor = [UIColor yellowColor];
     [super viewDidLoad];
+    
+    NSArray<UIView*> *allViews = self.stackView.arrangedSubviews;
+    self.scenes = [@[] mutableCopy];
+    
+    NSInteger sceneIndex = [self addScene];
+    
+    //Scene 1
+    [self addItemWithTarget:allViews[0]
+                    comment:@"Uno button"
+               borderedText:NO
+                   position:JMPositionLeft
+                       type:TargetTypePlain
+                    inScene:sceneIndex];
+    
+    [self addItemWithTarget:allViews[1] comment:@"Tap to continue"
+               borderedText:NO
+                   position:JMPositionBottom
+                       type:TargetTypeCircle
+                    inScene:sceneIndex];
+    
+    //Scene 2
+    sceneIndex = [self addScene];
+    
+    [self addItemWithTarget:allViews[2] comment:@"Tres text again\nSecond line here\nn' here"
+               borderedText:NO
+                   position:JMPositionRight
+                       type:TargetTypePlain
+                    inScene:sceneIndex];
+    
+    //Scene 3
+    sceneIndex = [self addScene];
+    [self addItemWithTarget:allViews[3] comment:@"Quattro text"
+               borderedText:NO
+                   position:JMPositionRight
+                       type:TargetTypePlain
+                    inScene:sceneIndex];
+    
+    //Scene 4 with button and label in bordered labels
+    sceneIndex = [self addScene];
+    [self addItemWithTarget:allViews[4] comment:@"Pinto over here"
+               borderedText:YES
+                   position:JMPositionRight
+                       type:TargetTypeRounded
+                    inScene:sceneIndex];
+    
+    [self addItemWithTarget:allViews[5] comment:@"Sixto is a label?"
+               borderedText:YES
+                   position:JMPositionBottom
+                       type:TargetTypePlain
+                    inScene:sceneIndex];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -29,62 +93,69 @@
     controller.delegate = self;
     [controller showAnimated:YES];
 }
+    
+#pragma mark - Scene Handling
+    
+- (NSInteger) addScene
+{
+    NSInteger index = self.scenes.count;
+    NSMutableArray<DemoItem*> *obj = [@[] mutableCopy];
+    [self.scenes addObject:obj];
+    return index;
+}
+
+- (void) addItemWithTarget:(UIView*)target comment:(NSString*)comment borderedText:(BOOL)bordered position:(JMHolePosition)position type:(TargetType)type inScene:(NSInteger)sceneIndex
+{
+    DemoItem *item = [[DemoItem alloc] init];
+    item.text = [[NSAttributedString alloc] initWithString:comment
+                                                attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14.f]}];
+    item.target = target;
+    item.position = position;
+    item.margin = 20.f;
+    item.type = type;
+    item.borderedText = bordered;
+    
+    switch (type) {
+        case TargetTypeCircle:
+        {
+            CGFloat dimension = MIN(target.frame.size.width, target.frame.size.height);
+            item.cornerRadius = dimension / 2.f;
+        } break;
+        
+        case TargetTypeRounded:
+        item.cornerRadius = 5.f;
+        break;
+        
+        case TargetTypePlain: break;
+    }
+                 
+    [self.scenes[sceneIndex] addObject:item];
+}
 
 #pragma mark - NGSTutorialController Data Source
 
 -(NSInteger)numberOfScenesInTutorialController:(NGSTutorialController *)tutorial
 {
-    return [self.stackView arrangedSubviews].count/2;
+    return self.scenes.count;
 }
 
 -(NSInteger)tutorialController:(NGSTutorialController *)tutorial numberOfItemsInScene:(NSInteger)scene
 {
-    return 2;
+    return self.scenes[scene].count;
 }
 
 -(NGSItem *)tutorialController:(NGSTutorialController *)tutorial itemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray<UIView*> *views = [self.stackView arrangedSubviews];
-    NSInteger itemsPerScene = 2;
-    UIView *view = views[indexPath.item + (indexPath.section * itemsPerScene)];
-    
-    NSString *text = [NSString stringWithFormat:@"Item No.%lu", indexPath.item];
-    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:text attributes:@{
-                                                                                                  NSFontAttributeName : [UIFont systemFontOfSize:14.f]
-                                                                                                  }];
-    
-    NGSItem *item = [[NGSItem alloc] init];
-    item.target = view;
-    CGFloat cornerRadius = 0.f;
-    JMHolePosition position = indexPath.section % 2 == 0 ? JMPositionRight : JMPositionLeft;
-    
-    if ([view isKindOfClass:[UIButton class]])
-    {
-        UIButton *button = (UIButton*)view;
-        if (button.buttonType != UIButtonTypeCustom)
-        {
-            //info button. make it round
-            cornerRadius = button.frame.size.height/2.f;
-        }
-    } else if ([view isKindOfClass:[UILabel class]])
-    {
-        cornerRadius = 0.f;
-        position = JMPositionBottom;
-    }
-    
-    item.cornerRadius = cornerRadius;
-    item.text = attrString;
-    item.position = position;
-    item.margin = 20.f;
-    
-    return item;
+    return self.scenes[indexPath.section][indexPath.item];
 }
 
 #pragma mark - NGSTutorialController delegate
 
 -(void)tutorialController:(NGSTutorialController *)tutorial willShowLabel:(UILabel *)label atIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section > 1)
+    DemoItem *item = self.scenes[indexPath.section][indexPath.item];
+    
+    if (item.borderedText)
     {
         //add rounded border
         label.layer.cornerRadius = 3.f;
