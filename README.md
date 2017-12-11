@@ -1,6 +1,11 @@
 # NGSTutorial
 Framework to build interactive tutorials
 
+[![Version](https://img.shields.io/cocoapods/v/NGSTutorial.svg)](http://cocoapods.org/pods/NGSTutorial)
+[![Platform](https://img.shields.io/badge/platform-iOS-blue.svg)](https://github.com/PauliusVindzigelskis/NGSTutorial)
+[![Language](https://img.shields.io/badge/language-ObjC-blue.svg)](https://github.com/PauliusVindzigelskis/NGSTutorial)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/PauliusVindzigelskis/NGSTutorial/master/LICENSE)
+
 ## Installation
 
 pod 'NGSTutorial'
