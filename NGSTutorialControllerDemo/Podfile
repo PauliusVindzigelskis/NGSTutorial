@@ -3,5 +3,4 @@ platform :ios, '9.0'
 
 target 'NGSTutorialControllerDemo' do
     pod 'NGSTutorial', path:'../'
-    pod 'JMHoledView', :git => 'https://github.com/PauliusVindzigelskis/JMHoledView.git', :branch => 'feature/iOS7Only'
 end

@@ -24,6 +24,6 @@ Pod::Spec.new do |s|
   s.source_files = 'Library/**/*.{h,m}'
   s.public_header_files = 'Library/**/*.h'
   s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'JMHoledView'
+  s.dependency 'JMHoleView'
   s.dependency 'Masonry'
 end
