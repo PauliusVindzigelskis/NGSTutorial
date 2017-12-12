@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NGSTutorial'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Tutorial Controller'
 
   s.description      = 'Framework to build interactive tutorials'
